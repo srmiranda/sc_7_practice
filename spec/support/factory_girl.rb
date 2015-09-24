@@ -7,4 +7,8 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :manufacturer do
+    name "Atlas Tech"
+    country "USA"
+  end
 end
