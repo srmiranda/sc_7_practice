@@ -43,7 +43,6 @@ feature 'user creates a manufacturer', %Q{
     visit new_manufacturer_path
 
     click_button 'Submit'
-    expect(page).to have_content('Name cannot be blank.')
-    expect(page).to have_content('Country cannot be blank.')
+    expect(page).to have_content("Name can't be blank, Country can't be blank Enter a Manufacturer Name Country")
   end
 end
