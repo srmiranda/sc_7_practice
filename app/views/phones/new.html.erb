@@ -1,0 +1,24 @@
+<h1>Add a Phone</h1>
+
+<%= form_for @phone do |f| %>
+
+  <%= f.label :manufacturer_id %>
+    <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :name) %>
+    <br>
+    <br>
+    <%= f.label :year %>
+    <%= f.text_field :year %>
+    <br>
+    <br>
+    <%= f.label :battery %>
+    <%= f.text_field :battery %>
+    <br>
+    <br>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <br>
+    <br>
+    <%= f.submit "Submit" %>
+<% end %>
+
+<%= link_to "Back", phones_path %>

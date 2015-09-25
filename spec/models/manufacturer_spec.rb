@@ -8,7 +8,7 @@ RSpec.describe Manufacturer, type: :model do
     end
 
     it "should have a name" do
-      expect(manufacturer.name).to eq("Atlas Tech")
+      expect(manufacturer.name).to eq("Motorola")
     end
 
     it "should have a country" do

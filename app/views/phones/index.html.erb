@@ -1,0 +1,13 @@
+<h1>Phones</h1>
+
+<ul>
+  <% @phones.each do |phone| %>
+    <li><%= phone.year %></li>
+    <li><%= phone.battery %></li>
+    <li><%= phone.description %></li>
+    <li><%= phone.manufacturer.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a Phone", new_phone_path %>
+<%= link_to "Add a Manufacturer", new_manufacturer_path %>

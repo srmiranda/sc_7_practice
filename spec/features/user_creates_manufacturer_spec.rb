@@ -7,42 +7,46 @@ feature 'user creates a manufacturer', %Q{
 } do
   scenario 'enter a manufacturer' do
     user = FactoryGirl.create(:user)
-
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-
-    click_button 'Log in'
-
-    expect(page).to have_content('Signed in successfully')
-    expect(page).to have_content('Sign Out')
+    login(user)
 
     visit new_manufacturer_path
-    save_and_open_page
-    fill_in 'Name', with: 'Atlas Tech'
+
+    fill_in 'Name', with: 'Motorola'
     fill_in 'Country', with: 'USA'
     click_button 'Submit'
-    expect(page).to have_content('name: Atlas Tech')
+    expect(page).to have_content('name: Motorola')
     expect(page).to have_content('country: USA')
   end
 
   scenario 'submit a blank form' do
     user = FactoryGirl.create(:user)
-
-    visit new_user_session_path
-
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-
-    click_button 'Log in'
-
-    expect(page).to have_content('Signed in successfully')
-    expect(page).to have_content('Sign Out')
+    login(user)
 
     visit new_manufacturer_path
 
     click_button 'Submit'
     expect(page).to have_content("Name can't be blank, Country can't be blank Enter a Manufacturer Name Country")
+  end
+
+  scenario 'submit a form with a blank name' do
+    user = FactoryGirl.create(:user)
+    login(user)
+
+    visit new_manufacturer_path
+
+    fill_in 'Country', with: 'USA'
+    click_button 'Submit'
+    expect(page).to have_content("Name can't be blank")
+  end
+
+  scenario 'submit a form with a blank name' do
+    user = FactoryGirl.create(:user)
+    login(user)
+
+    visit new_manufacturer_path
+
+    fill_in 'Name', with: 'Motorola'
+    click_button 'Submit'
+    expect(page).to have_content("Country can't be blank")
   end
 end

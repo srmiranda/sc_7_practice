@@ -4,5 +4,6 @@ class CreateManufacturers < ActiveRecord::Migration
       t.string :name, null: false
       t.string :country, null: false
     end
+    add_index :manufacturers, :name, unique: true
   end
 end
